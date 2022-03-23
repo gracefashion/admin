@@ -8,7 +8,9 @@ import 'package:kzn/providers/course_provider.dart';
 import 'package:kzn/providers/subscription_provider.dart';
 import 'package:kzn/providers/user_provider.dart';
 import 'package:kzn/ui/routes/about_route.dart';
+import 'package:kzn/ui/routes/admin_login_route.dart';
 import 'package:kzn/ui/routes/course_route.dart';
+import 'package:kzn/ui/routes/enrollment_route.dart';
 import 'package:kzn/ui/routes/login_route.dart';
 import 'package:kzn/ui/routes/main_route.dart';
 import 'package:kzn/ui/routes/privacy-policy.dart';
@@ -65,6 +67,8 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: MainRoute.routeName,
         routes: {
+          EnrollmentRoute.routeName: (context) => EnrollmentRoute(),
+          AdminLoginRoute.routeName: (context) => AdminLoginRoute(),
           MainRoute.routeName: (context) => BottomBar(),
           LoginRoute.routeName: (context) => LoginRoute(),
           SubscriptionRoute.routeName: (context) => SubscriptionRoute(),

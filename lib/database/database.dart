@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:firebase_core/firebase_core.dart';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,6 +11,13 @@ import 'package:uuid/uuid.dart';
 class Database {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseStorage _storage = FirebaseStorage.instance;
+
+  Stream<QuerySnapshot<Map<String, dynamic>>> watchEnrollment(
+          String collectionPath) =>
+      _firestore
+          .collection(collectionPath)
+          .orderBy('dateTime', descending: true)
+          .snapshots();
 
   Future<bool> uploadEnrollData(EnrollData enrollData) async {
     Completer<bool> _completer = Completer();
@@ -39,6 +44,7 @@ class Database {
                 : jsonData = jsonData.copyWith(facebookProfileSsImage: value));
           });
         })).then((value) async {
+          jsonData = jsonData.copyWith(dateTime: DateTime.now());
           await _firestore
               .collection(enrollCollection)
               .doc()

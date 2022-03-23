@@ -102,7 +102,12 @@ const courseLabel = TextStyle(
 );
 const formBorder = OutlineInputBorder(
   borderSide: BorderSide(
-    color: Colors.grey,
+    color: Colors.black,
+  ),
+);
+const focusBorder = OutlineInputBorder(
+  borderSide: BorderSide(
+    color: Colors.black,
   ),
 );
 
