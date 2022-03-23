@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kzn/controller/main_controller.dart';
+import 'package:kzn/data/constant.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -44,7 +45,7 @@ class EnrollmentRoute extends StatelessWidget {
                                 onTap: () {
                                   Get.defaultDialog(
                                     title: "Specific Enrollment Informations",
-                                    titleStyle: TextStyle(fontSize: 12),
+                                    titleStyle: inputLabel,
                                     radius: 5,
                                     content: enrollmentInformation(data: data),
                                   );
@@ -75,25 +76,32 @@ class EnrollmentRoute extends StatelessWidget {
 
 Widget enrollmentInformation({required EnrollData data}) {
   return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Text(""),
       //Student name and phone number
-      Text(data.name),
-      Text(data.phoneNumber),
+      Text("Name: ${data.name}"),
+      Text("Phone number: ${data.phoneNumber}"),
+      const SizedBox(height: 15),
+      Text("Enroll courses", style: inputLabel),
+      const SizedBox(height: 10),
       SizedBox(
-        height: data.courseNameList.length * 30,
+        height: data.courseNameList.length * 50,
         child: ListView.builder(
           itemCount: data.courseNameList.length,
           itemBuilder: (context, index) {
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                //Count
-                Text("${index + 1}"),
-                //Course Name
-                Text("${data.courseNameList[index]}"),
-              ],
+            return SizedBox(
+              child: Wrap(
+                children: [
+                  //Count
+                  Text(
+                    "${index + 1}. ",
+                    style: inputLabel,
+                  ),
+                  //Course Name
+                  Text("${data.courseNameList[index]}",
+                      maxLines: 1, overflow: TextOverflow.ellipsis),
+                ],
+              ),
             );
           },
         ),
