@@ -16,7 +16,7 @@ class Database {
           String collectionPath) =>
       _firestore
           .collection(collectionPath)
-          //.orderBy('dateTime', descending: true)
+          .orderBy('dateTime', descending: true)
           .snapshots();
 
   Future<bool> uploadEnrollData(EnrollData enrollData) async {
