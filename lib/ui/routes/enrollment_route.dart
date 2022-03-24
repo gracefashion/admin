@@ -13,6 +13,7 @@ class EnrollmentRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
     MainController _controller = Get.find();
     return Scaffold(
       appBar: AppBar(
@@ -47,7 +48,8 @@ class EnrollmentRoute extends StatelessWidget {
                                     title: "Specific Enrollment Informations",
                                     titleStyle: inputLabel,
                                     radius: 5,
-                                    content: enrollmentInformation(data: data),
+                                    content: enrollmentInformation(
+                                        data: data, size: screenSize),
                                   );
                                 },
                                 title: Text("${data.name} ${data.phoneNumber}"),
@@ -74,39 +76,46 @@ class EnrollmentRoute extends StatelessWidget {
   }
 }
 
-Widget enrollmentInformation({required EnrollData data}) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      //Student name and phone number
-      Text("Name: ${data.name}"),
-      Text("Phone number: ${data.phoneNumber}"),
-      const SizedBox(height: 15),
-      Text("Enroll courses", style: inputLabel),
-      const SizedBox(height: 10),
-      SizedBox(
-        height: data.courseNameList.length * 50,
-        child: ListView.builder(
-          itemCount: data.courseNameList.length,
-          itemBuilder: (context, index) {
-            return SizedBox(
-              child: Wrap(
-                children: [
-                  //Count
-                  Text(
-                    "${index + 1}. ",
-                    style: inputLabel,
+Widget enrollmentInformation({required EnrollData data, required Size size}) {
+  return SizedBox(
+    height: size.height * 0.4,
+    width: size.width * 0.8,
+    child: SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          //Student name and phone number
+          Text("Name: ${data.name}"),
+          Text("Phone number: ${data.phoneNumber}"),
+          Text("Payment: ${data.paymentAccName}"),
+          const SizedBox(height: 15),
+          Text("Enroll courses", style: inputLabel),
+          const SizedBox(height: 10),
+          SizedBox(
+            height: data.courseNameList.length * 50,
+            child: ListView.builder(
+              itemCount: data.courseNameList.length,
+              itemBuilder: (context, index) {
+                return SizedBox(
+                  child: Wrap(
+                    children: [
+                      //Count
+                      Text(
+                        "${index + 1}. ",
+                        style: inputLabel,
+                      ),
+                      //Course Name
+                      Text("${data.courseNameList[index]}",
+                          maxLines: 1, overflow: TextOverflow.ellipsis),
+                    ],
                   ),
-                  //Course Name
-                  Text("${data.courseNameList[index]}",
-                      maxLines: 1, overflow: TextOverflow.ellipsis),
-                ],
-              ),
-            );
-          },
-        ),
-      )
-    ],
+                );
+              },
+            ),
+          )
+        ],
+      ),
+    ),
   );
 }
 

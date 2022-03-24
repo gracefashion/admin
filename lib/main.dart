@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:kzn/bottom_nav/bottombar.dart';
 import 'package:kzn/providers/blog_provider.dart';
@@ -18,6 +19,7 @@ import 'package:kzn/ui/routes/subscription_check_route.dart';
 import 'package:kzn/ui/routes/subscription_route.dart';
 import 'package:kzn/ui/routes/tnc_route.dart';
 import 'package:provider/provider.dart';
+import 'package:uuid/uuid.dart';
 
 import 'controller/main_controller.dart';
 import 'ui/routes/enroll_form_route.dart';
@@ -30,6 +32,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await FirebaseMessaging.instance.subscribeToTopic('enrollment');
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   FirebaseMessaging messaging = FirebaseMessaging.instance;
@@ -55,7 +58,69 @@ Future<void> main() async {
   ], child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  void selectNotification(String? payload) async {
+    if (payload != null) {
+      debugPrint('notification payload: $payload');
+    }
+    await Get.toNamed(payload!);
+  }
+
+  Future<void> setUpForegroundNotification() async {
+    FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+        FlutterLocalNotificationsPlugin();
+    const AndroidInitializationSettings initializationSettingsAndroid =
+        AndroidInitializationSettings("@mipmap/ic_launcher");
+    final IOSInitializationSettings initializationSettingsIOS =
+        IOSInitializationSettings(
+            onDidReceiveLocalNotification: onDidReceiveLocalNotification);
+    //Initialization Setting
+    final InitializationSettings initializationSettings =
+        InitializationSettings(
+      android: initializationSettingsAndroid,
+      iOS: initializationSettingsIOS,
+    );
+    //Initialization and When user tap on notification,onSelectNotification callback is called.
+    await flutterLocalNotificationsPlugin.initialize(initializationSettings,
+        onSelectNotification: selectNotification);
+    //OnSelectNotification Callback Function
+////
+    const AndroidNotificationDetails androidPlatformChannelSpecifics =
+        AndroidNotificationDetails(
+      'Channel ID: 1',
+      'your channel name',
+      channelDescription: 'your channel description',
+      importance: Importance.max,
+      priority: Priority.high,
+      sound: RawResourceAndroidNotificationSound('noti'),
+      ticker: 'ticker',
+    );
+    const NotificationDetails platformChannelSpecifics = NotificationDetails(
+        android: androidPlatformChannelSpecifics,
+        iOS: IOSNotificationDetails(sound: "noti.mp3"));
+    //LIsten Notification
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
+      final noti = message.notification!;
+      await flutterLocalNotificationsPlugin.show(
+          0, //ID
+          noti.title,
+          noti.body,
+          platformChannelSpecifics,
+          payload: message.data["route"]);
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setUpForegroundNotification();
+  }
+
   @override
   Widget build(BuildContext context) {
     Get.put(MainController()); //Make Globle,
@@ -80,6 +145,12 @@ class MyApp extends StatelessWidget {
           SubscriptionCheckRoute.routeName: (context) =>
               SubscriptionCheckRoute()
         });
+  }
+
+  //For iOS App
+  void onDidReceiveLocalNotification(
+      int id, String? title, String? body, String? payload) {
+    Get.snackbar(title ?? "null", body ?? "null");
   }
 }
 

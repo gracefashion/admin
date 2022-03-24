@@ -1,12 +1,13 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:kzn/data/constant.dart';
-import 'package:kzn/database/database.dart';
 
 import '../data/models/enroll_data.dart';
+import '../services/database/database.dart';
 
 class MainController extends GetxController {
   final Database database = Database(); //Dependencies Injection
@@ -24,11 +25,12 @@ class MainController extends GetxController {
   Future<void> logOut() => FirebaseAuth.instance.signOut();
 
   void listenToUserChange() {
-    _subscription = FirebaseAuth.instance.userChanges().listen((user) {
+    _subscription = FirebaseAuth.instance.userChanges().listen((user) async {
       if (user == null) {
         currentUser.value.value = null;
       } else {
         currentUser.value.value = user;
+        await FirebaseMessaging.instance.subscribeToTopic("enrollment");
         database.watchEnrollment(enrollCollection).listen((event) {
           debugPrint("**************${event.docs.length}");
           if (event.docs.isEmpty) {
