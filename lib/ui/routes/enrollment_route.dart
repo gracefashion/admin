@@ -60,7 +60,9 @@ class EnrollmentRoute extends StatelessWidget {
                             ),
                             //PhotoView Profile
                             imageWidget(data.facebookProfileSsImage),
-                            SizedBox(width: 20,),
+                            SizedBox(
+                              width: 20,
+                            ),
                             imageWidget(data.bankSsImage),
                             //PhotoView BankSS
                           ]),
@@ -94,9 +96,9 @@ Widget enrollmentInformation({required EnrollData data, required Size size}) {
           Text("Enroll courses", style: inputLabel),
           const SizedBox(height: 10),
           SizedBox(
-            height: data.courseNameList.length * 50,
+            height: data.courseList.length * 50,
             child: ListView.builder(
-              itemCount: data.courseNameList.length,
+              itemCount: data.courseList.length,
               itemBuilder: (context, index) {
                 return SizedBox(
                   child: Wrap(
@@ -106,14 +108,20 @@ Widget enrollmentInformation({required EnrollData data, required Size size}) {
                         "${index + 1}. ",
                       ),
                       //Course Name
-                      Text("${data.courseNameList[index]}",
+                      Text("${data.courseList[index]["name"]}",
                           maxLines: 1, overflow: TextOverflow.ellipsis),
                     ],
                   ),
                 );
               },
             ),
-          )
+          ),
+          //Total Price
+          Align(
+              alignment: Alignment.bottomLeft,
+              child: Text(
+                "စုစုပေါင်း: ${data.totalPrice}ကျပ်",
+              )),
         ],
       ),
     ),

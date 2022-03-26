@@ -12,12 +12,36 @@ class Database {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
+  Stream<QuerySnapshot<Map<String, dynamic>>> requestCoursePrice(
+      String collectionPath) {
+    return _firestore
+        .collection(collectionPath)
+        .orderBy("dateTime", descending: true)
+        .snapshots();
+  }
+
   Stream<QuerySnapshot<Map<String, dynamic>>> watchEnrollment(
           String collectionPath) =>
       _firestore
           .collection(collectionPath)
           .orderBy('dateTime', descending: true)
           .snapshots();
+
+  Future<bool> uploadSimplData(
+      Map<String, dynamic> json, String collectionPath) async {
+    Completer<bool> completer = Completer();
+    try {
+      await _firestore
+          .collection(collectionPath)
+          .doc()
+          .set(json)
+          .then((value) => completer.complete(true));
+    } catch (e) {
+      completer.complete(false);
+      debugPrint("******Simple Data Upload Error: $e");
+    }
+    return completer.future;
+  }
 
   Future<bool> uploadEnrollData(EnrollData enrollData) async {
     Completer<bool> _completer = Completer();

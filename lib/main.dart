@@ -21,7 +21,7 @@ import 'package:kzn/ui/routes/tnc_route.dart';
 import 'package:provider/provider.dart';
 
 import 'controller/main_controller.dart';
-import 'ui/routes/enroll_form_route.dart';
+import 'ui/routes/edit_courses.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
@@ -131,6 +131,7 @@ class _MyAppState extends State<MyApp> {
         ),
         initialRoute: MainRoute.routeName,
         routes: {
+          EditCourses.routeName: (contect) => EditCourses(),
           EnrollmentRoute.routeName: (context) => EnrollmentRoute(),
           AdminLoginRoute.routeName: (context) => AdminLoginRoute(),
           MainRoute.routeName: (context) => BottomBar(),
@@ -139,7 +140,6 @@ class _MyAppState extends State<MyApp> {
           CourseRoute.routeName: (context) => CourseRoute(),
           AboutRoute.routeName: (context) => AboutRoute(),
           TnCRoute.routeName: (context) => TnCRoute(),
-          EnrollFormRoute.routeName: (context) => EnrollFormRoute(),
           PrivacyPolicyRoute.routeName: (context) => PrivacyPolicyRoute(),
           SubscriptionCheckRoute.routeName: (context) =>
               SubscriptionCheckRoute()

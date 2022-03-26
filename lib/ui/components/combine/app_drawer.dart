@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:kzn/controller/main_controller.dart';
 import 'package:kzn/ui/components/single/user_info.dart';
 import 'package:kzn/ui/routes/about_route.dart';
+import 'package:kzn/ui/routes/edit_courses.dart';
 import 'package:kzn/ui/routes/enrollment_route.dart';
 import 'package:kzn/ui/routes/privacy-policy.dart';
 import 'package:kzn/ui/routes/tnc_route.dart';
@@ -47,6 +48,22 @@ class AppDrawer extends StatelessWidget {
                         style: TextStyle(color: Colors.black)),
                     onTap: () {
                       Navigator.pushNamed(context, EnrollmentRoute.routeName);
+                    },
+                  )
+                : const SizedBox();
+          }),
+          //Edit Course
+          Obx(() {
+            return _controller.currentUser.value.value != null
+                ? ListTile(
+                    leading: Icon(
+                      Icons.edit,
+                      color: Colors.black,
+                    ),
+                    title: Text("Edit Courses Price 💸",
+                        style: TextStyle(color: Colors.black)),
+                    onTap: () {
+                      Navigator.pushNamed(context, EditCourses.routeName);
                     },
                   )
                 : const SizedBox();

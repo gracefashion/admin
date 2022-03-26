@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 // import 'package:kzn/bottom_nav/bankslip.dart';
 import 'package:kzn/data/models/user.dart';
 import 'package:kzn/providers/user_provider.dart';
-import 'package:kzn/ui/routes/enroll_form_route.dart';
 import 'dart:ui' as ui;
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -213,7 +212,7 @@ class _LoginRouteState extends State<LoginRoute>
                           color: Colors.black),
                     ),
                     onPressed: () {
-                      Get.toNamed(EnrollFormRoute.routeName);
+                      //Get.toNamed(EnrollFormRoute.routeName);
                       //Get.pushNamed(context, EnrollFormRoute.routeName);
                     },
                   ),
@@ -272,7 +271,7 @@ class _LoginRouteState extends State<LoginRoute>
               fontSize: 14.0, fontWeight: FontWeight.bold, color: Colors.black),
         ),
         onPressed: () async {
-          Navigator.pushNamed(context, EnrollFormRoute.routeName);
+          //Navigator.pushNamed(context, EnrollFormRoute.routeName);
         },
       ),
     ));

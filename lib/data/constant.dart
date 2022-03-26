@@ -112,3 +112,4 @@ const focusBorder = OutlineInputBorder(
 );
 
 const enrollCollection = "enrollCollection";
+const courseCollection = "courseCollection";

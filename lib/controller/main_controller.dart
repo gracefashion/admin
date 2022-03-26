@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:kzn/data/constant.dart';
+import 'package:kzn/data/models/course_price.dart';
 
 import '../data/models/enroll_data.dart';
 import '../services/database/database.dart';
@@ -15,6 +15,7 @@ class MainController extends GetxController {
 
   var currentUser = Rxn<User?>().obs;
   RxList<EnrollData> enrollDataList = <EnrollData>[].obs;
+  RxList<CoursePrice> coursePriceList = <CoursePrice>[].obs;
 
   @override
   void onInit() {
@@ -37,6 +38,15 @@ class MainController extends GetxController {
           } else {
             enrollDataList.value =
                 event.docs.map((e) => EnrollData.fromJson(e.data())).toList();
+          }
+        });
+        //Watch Course Price List
+        database.watchEnrollment(courseCollection).listen((event) {
+          if (event.docs.isEmpty) {
+            coursePriceList.clear();
+          } else {
+            coursePriceList.value =
+                event.docs.map((e) => CoursePrice.fromJson(e.data())).toList();
           }
         });
       }
