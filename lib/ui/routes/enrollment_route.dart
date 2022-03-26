@@ -16,10 +16,12 @@ class EnrollmentRoute extends StatelessWidget {
     final screenSize = MediaQuery.of(context).size;
     MainController _controller = Get.find();
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        elevation: 0,
         iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
-        title: Text("My Enrollment Data",
+        title: Text("A 1 Student Enrolled Information",
             style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 16.0,
@@ -34,18 +36,17 @@ class EnrollmentRoute extends StatelessWidget {
                   return AspectRatio(
                     aspectRatio: 16 / 4,
                     child: Card(
-                      elevation: 5,
                       child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             //Name,Phone and Date ListTile
                             Flexible(
-                              flex: 2,
+                              flex: 3,
                               child: ListTile(
                                 onTap: () {
                                   Get.defaultDialog(
-                                    title: "Specific Enrollment Informations",
+                                    title: "Student Enrolled Information",
                                     titleStyle: inputLabel,
                                     radius: 5,
                                     content: enrollmentInformation(
@@ -59,6 +60,7 @@ class EnrollmentRoute extends StatelessWidget {
                             ),
                             //PhotoView Profile
                             imageWidget(data.facebookProfileSsImage),
+                            SizedBox(width: 20,),
                             imageWidget(data.bankSsImage),
                             //PhotoView BankSS
                           ]),
@@ -78,7 +80,7 @@ class EnrollmentRoute extends StatelessWidget {
 
 Widget enrollmentInformation({required EnrollData data, required Size size}) {
   return SizedBox(
-    height: size.height * 0.4,
+    height: size.height * 0.7,
     width: size.width * 0.8,
     child: SingleChildScrollView(
       child: Column(
@@ -102,7 +104,6 @@ Widget enrollmentInformation({required EnrollData data, required Size size}) {
                       //Count
                       Text(
                         "${index + 1}. ",
-                        style: inputLabel,
                       ),
                       //Course Name
                       Text("${data.courseNameList[index]}",

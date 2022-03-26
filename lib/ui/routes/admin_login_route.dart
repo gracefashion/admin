@@ -28,19 +28,19 @@ class _AdminLoginRouteState extends State<AdminLoginRoute> {
       body: SafeArea(
         child: Form(
           key: _controller.formKey,
-          child: ListView(
+          child: Column(
             children: [
               //A1 Image
               Center(
                 child: Container(
                   //color: Colors.green,
-                  width: size.width * 0.6,
+                  width: size.width * 0.7,
                   height: size.height * 0.4,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 10, bottom: 40),
+                    padding: const EdgeInsets.only(top: 120, bottom: 40),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: Image(
@@ -67,12 +67,12 @@ class _AdminLoginRouteState extends State<AdminLoginRoute> {
               ),
               //Space
               const SizedBox(
-                height: 10,
+                height: 30,
               ),
               //Button
               Center(
                 child: SizedBox(
-                  width: 100,
+                  width: 270,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(50, 50),
@@ -86,9 +86,13 @@ class _AdminLoginRouteState extends State<AdminLoginRoute> {
                             VerifyPhoneCodePage(callBack: function),
                       ));
                     }),
-                    child: Text("Send Code",
+                    child: Text("OTP Code တောင်းခံမည်",
                         style: TextStyle(
+                          fontSize: 16,
                           color: Colors.white,
+                          wordSpacing: 2,
+                          letterSpacing: 1,
+
                         )),
                   ),
                 ),

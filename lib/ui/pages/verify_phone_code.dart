@@ -26,14 +26,14 @@ class VerifyPhoneCodePage extends StatelessWidget {
                   width: size.width * 0.6,
                   height: size.height * 0.4,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 10, bottom: 40),
+                    padding: const EdgeInsets.only(top: 100, bottom: 40),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(10),
                       child: Image(
                         image: AssetImage('assets/images/appicon.png'),
+
                         fit: BoxFit.fitHeight,
                       ),
                     ),
@@ -43,16 +43,19 @@ class VerifyPhoneCodePage extends StatelessWidget {
               //Notification Sentence
               Padding(
                 padding: const EdgeInsets.only(left: 50,right: 50,top: 10),
-                child: const Text(
-                    "We have sent 6 digits verification code into your phone\n"
-                    "Check code and enter...",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    )),
+                child: Center(
+                  child: const Text(
+                      "လူကြီးမင်းဖုန်းထံသို့ ပေးပို့ထားသော OTP Code ကို ဖြည့်သွင်းပေးပါ...",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      )),
+                ),
               ),
-              const SizedBox(height: 15),
+              const SizedBox(height: 30),
               //Phone TextField
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
@@ -69,12 +72,12 @@ class VerifyPhoneCodePage extends StatelessWidget {
               ),
               //Space
               const SizedBox(
-                height: 10,
+                height: 30,
               ),
               //Button
               Center(
                 child: SizedBox(
-                  width: 100,
+                  width: 150,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(50, 50),
@@ -82,7 +85,7 @@ class VerifyPhoneCodePage extends StatelessWidget {
                     ),
                     onPressed: () =>
                         callBack(_controller.phoneCodeController.text),
-                    child: Text("Verify",
+                    child: Text("အတည်ပြုမည်",
                         style: TextStyle(
                           color: Colors.white,
                         )),

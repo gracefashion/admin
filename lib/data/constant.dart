@@ -78,14 +78,14 @@ List<CheckboxModel> courseList = [
 
 final List<String> paymentAccList = [
   "09968610865 (KBZ Pay)",
-  "Wave Pay 09269303500 Password - 303500 ထားပေးပါ။",
+  "Wave Pay 09269303500 Password - 303500 ထားပေးပါ",
   "20009228825 (AYA Bank)",
   "0010600100428507 (CB Bank)",
 ];
 
 const Map<String, dynamic> paymentAccMap = {
   "1": "09968610865 (KBZ Pay)",
-  "2": "Wave Pay 09269303500 Password - 303500 ထားပေးပါ။",
+  "2": "Wave Pay 09269303500 Password - 303500 ထားပေးပါ",
   "3": "20009228825 (AYA Bank)",
   "4": "0010600100428507 (CB Bank)",
 };
@@ -94,11 +94,11 @@ const Map<String, dynamic> paymentAccMap = {
 const inputLabel = TextStyle(
   color: Colors.black,
   fontWeight: FontWeight.bold,
-  fontSize: 20,
+  fontSize: 16,
 );
 const courseLabel = TextStyle(
   color: Colors.black,
-  fontSize: 18,
+  fontSize: 14,
 );
 const formBorder = OutlineInputBorder(
   borderSide: BorderSide(

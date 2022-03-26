@@ -32,7 +32,6 @@ class MainController extends GetxController {
         currentUser.value.value = user;
         await FirebaseMessaging.instance.subscribeToTopic("enrollment");
         database.watchEnrollment(enrollCollection).listen((event) {
-          debugPrint("**************${event.docs.length}");
           if (event.docs.isEmpty) {
             enrollDataList.clear();
           } else {
