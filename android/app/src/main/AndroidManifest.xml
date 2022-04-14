@@ -2,7 +2,7 @@
     package="com.kzn.a1onlinelearning">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="A 1 Online Learning Center"
+        android:label="A 1 Admin"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true">
         <activity
