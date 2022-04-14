@@ -8,6 +8,9 @@ import 'package:kzn/ui/routes/enrollment_route.dart';
 import 'package:kzn/ui/routes/privacy-policy.dart';
 import 'package:kzn/ui/routes/tnc_route.dart';
 
+import '../../../data/constant.dart';
+import '../../../utils/open_facebook.dart';
+
 class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -69,7 +72,7 @@ class AppDrawer extends StatelessWidget {
                 : const SizedBox();
           }),
           Container(
-            margin: EdgeInsets.all(8),
+            margin: EdgeInsets.all(5),
             child: ListTile(
               leading: Icon(
                 Icons.privacy_tip,
@@ -87,7 +90,7 @@ class AppDrawer extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.all(8),
+            margin: EdgeInsets.all(5),
             child: ListTile(
               leading: Icon(Icons.book, color: Colors.black),
               title: Text('Terms of Conditions',
@@ -102,7 +105,7 @@ class AppDrawer extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(top: 8, left: 8, right: 8, bottom: 12),
+            margin: EdgeInsets.all(5),
             child: ListTile(
               leading: Icon(Icons.group, color: Colors.black),
               title: Text(
@@ -118,11 +121,23 @@ class AppDrawer extends StatelessWidget {
               },
             ),
           ),
+
+          Container(
+            margin: EdgeInsets.all(5),
+            child: ListTile(
+              leading: Icon(Icons.facebook, color: Colors.blue),
+              title: Text('A 1 Facebook Page', style: TextStyle(color: Colors.black)),
+              onTap: () {
+                OpenFacebook.open(fbProtocolUrl, fallbackUrl);
+              },
+            ),
+          ),
+
           Divider(),
           Obx(() {
             return _controller.currentUser.value.value != null
                 ? Container(
-                    margin: EdgeInsets.only(top: 12, left: 8, right: 8),
+                    margin: EdgeInsets.only(top: 5, left: 8, right: 8),
                     child: ListTile(
                       leading: Icon(Icons.logout, color: Colors.black),
                       title:
