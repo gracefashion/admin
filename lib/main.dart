@@ -24,7 +24,6 @@ import 'controller/main_controller.dart';
 import 'ui/routes/edit_courses.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  await Firebase.initializeApp();
   print('Handling a background message ${message.messageId}');
 }
 
@@ -33,9 +32,7 @@ Future<void> main() async {
   await Firebase.initializeApp();
   await FirebaseMessaging.instance.subscribeToTopic('enrollment');
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
   FirebaseMessaging messaging = FirebaseMessaging.instance;
-
   NotificationSettings settings = await messaging.requestPermission(
     alert: true,
     announcement: false,
