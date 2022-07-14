@@ -97,6 +97,7 @@ flutter_icons:
   image_path: "assets/images/appicon.png"
   android: true
   ios: true
+  remove_alpha_ios: true
 
 
 

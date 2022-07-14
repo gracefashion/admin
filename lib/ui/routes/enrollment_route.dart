@@ -19,13 +19,13 @@ class EnrollmentRoute extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: IconThemeData(color: Colors.pinkAccent),
         backgroundColor: Colors.white,
-        title: Text("A 1 Student Enrolled Information",
+        title: Text("Grace Student Enrolled Information",
             style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 16.0,
-                color: Colors.black)),
+                color: Colors.pinkAccent)),
       ),
       body: Obx(() {
         return _controller.enrollDataList.isNotEmpty
@@ -73,7 +73,7 @@ class EnrollmentRoute extends StatelessWidget {
             : Center(
                 child: Text(
                 "No enrollment data yet!",
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: Colors.pinkAccent),
               ));
       }),
     );

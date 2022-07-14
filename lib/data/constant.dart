@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:kzn/data/models/checkbox_model.dart';
 
-final String appName = "A 1 Online Learning Center";
+final String appName = "Grace Fashion & Design School";
 // production server http://13.213.196.157:8000 2021-10-08 Updated
 // development server http://192.168.1.2:8000
 // http://127.0.0.1:8000/
 //final String backendApiServer = 'http://13.213.196.157:8000';
-final String backendApiServer = 'http://15.237.152.15:8000';
+final String backendApiServer = 'http://13.228.246.153:8000';
 final String apiVersion = backendApiServer + '';
 final String loginEndpoint = apiVersion + '/api/token/';
 final String courseEndpoint = apiVersion + '/courses/?limit=100';
@@ -14,20 +14,21 @@ final String subscriptionEndpoint = apiVersion + '/subscriptions/';
 
 final String appIconAsset = "assets/images/appicon.png";
 final String appIconUrl =
-    "https://a1olc.sfo3.cdn.digitaloceanspaces.com/A1.jpeg";
+    "https://grace.sgp1.cdn.digitaloceanspaces.com/logo.png";
 
 final Color tileColor = Colors.yellow;
 final Color? iconColor = Colors.indigo[900];
 
-final String fbProtocolUrl = "fb://page/102832035634505";
+final String fbProtocolUrl = "fb://page/Gracefashionschool";
 final String fallbackUrl =
-    "https://www.facebook.com/A-1-Online-Learning-Center-102832035634505";
+    "https://grace.sgp1.cdn.digitaloceanspaces.com/trlogo.png";
 
 final List<String> introSliderImages = [
   "assets/images/slider/1.png",
   "assets/images/slider/2.png",
   "assets/images/slider/3.png",
-  "assets/images/slider/4.png"
+  "assets/images/slider/4.png",
+  "assets/images/slider/5.png"
 ];
 
 const List<String> courseNameList = [

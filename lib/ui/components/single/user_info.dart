@@ -21,7 +21,7 @@ class _UserInfoState extends State<UserInfo> {
             ? Container(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.black,
+                    primary: Colors.pinkAccent,
                   ),
                   child: Text("Login", style: TextStyle(color: Colors.white)),
                   onPressed: () {
@@ -41,7 +41,10 @@ class _UserInfoState extends State<UserInfo> {
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Text(
-                          "${_controller.currentUser.value.value?.phoneNumber}"),
+                          "${_controller.currentUser.value.value?.phoneNumber}",
+                      style: TextStyle(
+                        color: Colors.pinkAccent
+                      ),),
                     ),
                   ),
                 ],

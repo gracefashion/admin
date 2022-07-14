@@ -40,7 +40,7 @@ class AppDrawer extends StatelessWidget {
             return _controller.currentUser.value.value != null
                 ? ListTile(
                     leading: CircleAvatar(
-                        backgroundColor: Colors.black,
+                        backgroundColor: Colors.pinkAccent,
                         minRadius: 15,
                         maxRadius: 15,
                         child: Text(
@@ -48,7 +48,7 @@ class AppDrawer extends StatelessWidget {
                           style: TextStyle(color: Colors.white, fontSize: 14),
                         )),
                     title: Text("My Enrollment Data 📜",
-                        style: TextStyle(color: Colors.black)),
+                        style: TextStyle(color: Colors.pinkAccent)),
                     onTap: () {
                       Navigator.pushNamed(context, EnrollmentRoute.routeName);
                     },
@@ -61,10 +61,10 @@ class AppDrawer extends StatelessWidget {
                 ? ListTile(
                     leading: Icon(
                       Icons.edit,
-                      color: Colors.black,
+                      color: Colors.pinkAccent,
                     ),
                     title: Text("Edit Courses Price 💸",
-                        style: TextStyle(color: Colors.black)),
+                        style: TextStyle(color: Colors.pinkAccent)),
                     onTap: () {
                       Navigator.pushNamed(context, EditCourses.routeName);
                     },
@@ -76,10 +76,10 @@ class AppDrawer extends StatelessWidget {
             child: ListTile(
               leading: Icon(
                 Icons.privacy_tip,
-                color: Colors.black,
+                color: Colors.pinkAccent,
               ),
               title:
-                  Text('Privacy Policy', style: TextStyle(color: Colors.black)),
+                  Text('Privacy Policy', style: TextStyle(color: Colors.pinkAccent)),
               onTap: () {
                 // Update the state of the app
                 // ...
@@ -92,9 +92,9 @@ class AppDrawer extends StatelessWidget {
           Container(
             margin: EdgeInsets.all(5),
             child: ListTile(
-              leading: Icon(Icons.book, color: Colors.black),
+              leading: Icon(Icons.book, color: Colors.pinkAccent),
               title: Text('Terms of Conditions',
-                  style: TextStyle(color: Colors.black)),
+                  style: TextStyle(color: Colors.pinkAccent)),
               onTap: () {
                 // Update the state of the app
                 // ...
@@ -107,10 +107,10 @@ class AppDrawer extends StatelessWidget {
           Container(
             margin: EdgeInsets.all(5),
             child: ListTile(
-              leading: Icon(Icons.group, color: Colors.black),
+              leading: Icon(Icons.group, color: Colors.pinkAccent),
               title: Text(
                 'About',
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: Colors.pinkAccent),
               ),
               onTap: () {
                 // Update the state of the app
@@ -122,26 +122,15 @@ class AppDrawer extends StatelessWidget {
             ),
           ),
 
-          Container(
-            margin: EdgeInsets.all(5),
-            child: ListTile(
-              leading: Icon(Icons.facebook, color: Colors.blue),
-              title: Text('A 1 Facebook Page', style: TextStyle(color: Colors.black)),
-              onTap: () {
-                OpenFacebook.open(fbProtocolUrl, fallbackUrl);
-              },
-            ),
-          ),
-
           Divider(),
           Obx(() {
             return _controller.currentUser.value.value != null
                 ? Container(
                     margin: EdgeInsets.only(top: 5, left: 8, right: 8),
                     child: ListTile(
-                      leading: Icon(Icons.logout, color: Colors.black),
+                      leading: Icon(Icons.logout, color: Colors.pinkAccent),
                       title:
-                          Text('Logout', style: TextStyle(color: Colors.black)),
+                          Text('Logout', style: TextStyle(color: Colors.pinkAccent)),
                       onTap: () {
                         _controller.logOut();
                         // Then close the drawer

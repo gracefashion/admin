@@ -39,7 +39,7 @@ class _LoginRouteState extends State<LoginRoute>
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
-        iconTheme: const IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.pinkAccent),
         backgroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
@@ -168,8 +168,8 @@ class _LoginRouteState extends State<LoginRoute>
                           gradient: LinearGradient(
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
-                              colors: [Colors.black, Colors.black]),
-                          border: Border.all(color: Colors.black),
+                              colors: [Colors.pinkAccent, Colors.pinkAccent]),
+                          border: Border.all(color: Colors.pinkAccent),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: MaterialButton(
@@ -203,13 +203,13 @@ class _LoginRouteState extends State<LoginRoute>
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.white),
                     ),
-                    icon: Icon(Icons.school_outlined, color: Colors.black),
+                    icon: Icon(Icons.school_outlined, color: Colors.pinkAccent),
                     label: Text(
                       'Enroll Now',
                       style: const TextStyle(
                           fontSize: 14.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black),
+                          color: Colors.pinkAccent),
                     ),
                     onPressed: () {
                       //Get.toNamed(EnrollFormRoute.routeName);
@@ -222,15 +222,15 @@ class _LoginRouteState extends State<LoginRoute>
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.white),
                     ),
-                    icon: Icon(Icons.phone_outlined, color: Colors.black),
+                    icon: Icon(Icons.phone_outlined, color: Colors.pinkAccent),
                     label: Text(
                       'Contact Us',
                       style: const TextStyle(
                           fontSize: 14.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black),
+                          color: Colors.pinkAccent),
                     ),
-                    onPressed: () => launch("tel://09269303500"),
+                    onPressed: () => launch("tel://09969545215"),
                   ),
                 ],
               ),

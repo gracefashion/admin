@@ -81,7 +81,7 @@ class VerifyPhoneCodePage extends StatelessWidget {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(50, 50),
-                      primary: Colors.black,
+                      primary: Colors.pinkAccent,
                     ),
                     onPressed: () =>
                         callBack(_controller.phoneCodeController.text),

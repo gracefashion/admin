@@ -47,11 +47,11 @@ class _MainRouteState extends State<MainRoute> {
         backgroundColor: Colors.white,
         appBar: AppBar(
             elevation: 0,
-            iconTheme: IconThemeData(color: Colors.black),
+            iconTheme: IconThemeData(color: Colors.pinkAccent),
             backgroundColor: Colors.white,
-            title: Text("A 1 Online Learning Center",
+            title: Text("Grace Admin App",
 
-                style: TextStyle(fontSize: 16.0, color: Colors.black,
+                style: TextStyle(fontSize: 16.0, color: Colors.pinkAccent,
                   letterSpacing: 1,
                   wordSpacing: 2,
                 )),
@@ -101,7 +101,7 @@ class _MainRouteState extends State<MainRoute> {
                   ),
                   onPressed: () async {
                     try {
-                      await launch('https://m.me/102832035634505');
+                      await launch('https://m.me/Gracefashionschool');
                     } catch (e) {
                       print(e);
                     }

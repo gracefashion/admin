@@ -76,7 +76,7 @@ class _AdminLoginRouteState extends State<AdminLoginRoute> {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(50, 50),
-                      primary: Colors.black,
+                      primary: Colors.pinkAccent,
                     ),
                     onPressed: () => _controller
                         .signInWithPhoneNumber(_controller.phoneController.text,

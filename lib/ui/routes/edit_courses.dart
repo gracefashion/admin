@@ -36,13 +36,15 @@ class _EditCoursesState extends State<EditCourses> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: IconThemeData(color: Colors.pinkAccent),
         backgroundColor: Colors.white,
         title: Text("A 1 Courses Editing",
             style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 16.0,
-                color: Colors.black)),
+                wordSpacing: 2,
+                letterSpacing: 2,
+                color: Colors.pinkAccent)),
         actions: [
           IconButton(
             onPressed: () {
@@ -57,7 +59,7 @@ class _EditCoursesState extends State<EditCourses> {
                   alignment: Alignment.bottomCenter,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.black,
+                      primary: Colors.pinkAccent,
                     ),
                     onPressed: () {
                       _controller.uploadCourse();
@@ -72,7 +74,7 @@ class _EditCoursesState extends State<EditCourses> {
                 ),
               );
             },
-            icon: Icon(FontAwesomeIcons.plusCircle, color: Colors.black),
+            icon: Icon(FontAwesomeIcons.plusCircle, color: Colors.pinkAccent),
           ),
         ],
       ),
@@ -131,7 +133,7 @@ class _EditCoursesState extends State<EditCourses> {
               controller: controller.priceController,
               validator: controller.validateCoursePrice,
               decoration: InputDecoration(
-                hintText: "Ener course price",
+                hintText: "Enter course price",
                 border: formBorder,
               ),
               keyboardType: TextInputType.number,
